@@ -1,0 +1,54 @@
+html,body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(185, 181, 181);
+    height: 100%;
+}
+#header {
+    height: 60px;
+    width: 100%;
+    background-color: rgb(59, 69, 78);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#main {
+    width: 100%
+}
+
+#logo {
+    height: 36px;
+    width: 36px;
+}
+
+#app-logo {
+    background-color: black;
+    padding: 5px;
+    margin-left: 3px;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+#text-heading {
+    color: white;
+}
+
+/* #column {
+    width: 200px;
+    height: 100vh;
+} */
+
+#whatthefuck {
+    height: 100%;
+    margin: 0%;
+}
+
+#content {
+    display: flex;
+    height: 100%;
+}
