@@ -1,6 +1,5 @@
 /* eslint-disable quotes */
 let $weightTraining = $("#weight-training-pill");
-
 let cardRowDiv = $(
   '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 pt-2">'
 );
@@ -74,7 +73,7 @@ function exerciseData(url) {
 }
 
 exerciseData();
-
+// pulls the exercises from the url located from the original data of the first url on the next obj key
 function nextExerList() {
   let url1 = "https://wger.de/api/v2/exerciseinfo/?limit=36";
   $.get(url1, (data) => {
@@ -97,7 +96,7 @@ function nextExerList() {
     });
   });
 }
-
+// shows list of exercises with the abs category
 function absList() {
   let absUrl = "https://wger.de/api/v2/exerciseinfo/?limit=36";
   $.get(absUrl, (data) => {
@@ -123,8 +122,34 @@ function absList() {
     }
   });
 }
-// absList();
 
+function armsList() {
+  let armssUrl = "https://wger.de/api/v2/exerciseinfo/?limit=36";
+  $.get(armssUrl, (data) => {
+    // console.log(data);
+    let englishList = [];
+    for (let i = 0; i < data.results.length; i++) {
+      let exerLang = data.results[i];
+      if (exerLang.language.id === 2) {
+        englishList.push(exerLang);
+        // console.log(englishList);
+      }
+    }
+    let armArr = [];
+    for (let j in englishList) {
+      let exerList = englishList[j];
+      if (exerList.category.id === 8) {
+        armArr.push(englishList[j]);
+      }
+    }
+    for (let k in armArr) {
+      let armsExercises = armArr[k];
+      showExercises(armsExercises);
+    }
+  });
+}
+
+// shows all exercises that with the english language
 function showExercises(engList) {
   let cardColDiv = $('<div class="col">');
   let card = $(
@@ -166,4 +191,10 @@ prev.click(function () {
 absItem.click(function () {
   cardRowDiv.empty();
   absList();
+});
+
+armsItem.click(function () {
+  console.log("click");
+  cardRowDiv.empty();
+  armsList();
 });
